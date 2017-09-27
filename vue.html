@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> My App </title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+<!-- interpolation -->
+<div id="app">
+  {{ message }}
+</div>
+<script>
+    // el will be the id of HTML tags
+    // its equivalent to document.getElementById('app')
+    // or simply $('#app')
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+
+</script>
+<!-- one time interpolation -->
+<span v-once id="app1">
+    This will never change: {{ message }}
+</span>
+<!-- output parsed HTML, interpreted as plain HTML, no data binding -->
+<div v-html="rawHtml">
+    
+</div>
+<script>
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            message: "one time interpolation"
+        }
+    })
+</script>
+
+
+<!-- one way binding, binding to a variable in backend -->
+<div id="app-2">
+  <!-- short hand: <span :title="message">  i.e. don't write v-bind -->
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
+<script>
+    var app2 = new Vue({
+      el: '#app-2',
+      data: {
+        message: 'You loaded this page on ' + new Date().toLocaleString()
+      }
+    })
+</script>
+
+
+<!-- if statement -->
+<div id="app-3">
+  <span v-if="seen">Now you see me</span>
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+<script>
+    var app3 = new Vue({
+      el: '#app-3',
+      data: {
+        seen: true
+      }
+    })
+</script>
+<!-- v-if has higher toggle costs and v-show has higier initial render costs -->
+
+
+<!-- for loops -->
+<div id="app-4">
+  <ol>
+    <li v-for="(todo, index) in todos">
+    
+      {{ todo.text + " " + index.toString() }}
+    </li>
+  </ol>
+</div>
+<!-- iterate of an object 
+    <div v-for="(value, key, index) in object">
+      {{ key }}: {{ value }}: {{ index }}
+    </div>
+-->
+<script>
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [
+          { text: 'Learn JavaScript' },
+          { text: 'Learn Vue' },
+          { text: 'Build something awesome' }
+        ]
+      }
+    })
+    // append a new item into an array
+    app4.todos.push({ text: 'Add a new item'})
+    // other useful array methods: pop, splice, sort, reverse
+    // shift: remove head
+    // unshift: append head
+    // splice(startingIndex, numOfItemsRemove)  remove a few items
+    // splice(startingIndex, items to insert)
+
+
+</script>
+
+
+<!-- event handler, bind a function to a button click -->
+<div id="app-5">
+  <p>{{ message }}</p>
+  <!-- short hand: <button @click="reverseMessage">Reverse Message</button> -->
+  <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+<script>
+    var app5 = new Vue({
+      el: '#app-5',
+      data: {
+        message: 'Hello Vue.js!'
+      },
+      methods: {
+        reverseMessage: function () {
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
+    })
+</script>
+
+
+<!-- two way data binding -->
+<div id="app-6">
+  <p>value of variable message: {{ message }}</p>
+  <input v-model="message">
+</div>
+<script>
+    var app6 = new Vue({
+      el: '#app-6',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+</script>
+
+
+
+
+<!-- define component -->
+<div id="app-7">
+  <ol>
+    <!--
+      Now we provide each todo-item with the todo object
+      it's representing, so that its content can be dynamic.
+      We also need to provide each component with a "key",
+      which will be explained later.
+    -->
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id">
+    </todo-item>
+  </ol>
+</div>
+<script>
+    // define a component with its name, input parameters(props) and template
+    Vue.component('todo-item', {
+      props: ['todo'],
+      template: '<li>{{ todo.text }}</li>'
+    })
+    // new Vue Model
+    var app7 = new Vue({
+      el: '#app-7',
+      data: {
+        groceryList: [
+          { id: 0, text: 'Vegetables' },
+          { id: 1, text: 'Cheese' },
+          { id: 2, text: 'Whatever else humans are supposed to eat' }
+        ]
+      }
+    })
+</script>
+
+
+
+<!-- $var are pre-defined properties, different from user-defined properties -->
+<script>
+    var data = {a: 1}
+    var vm = new Vue({
+      el: '#example',
+      data: data
+    })
+    vm.$data === data // => true
+    vm.$el === document.getElementById('example') // => true
+    // $watch is an instance method
+    vm.$watch('a', function (newValue, oldValue) {
+        console.log("in callback")
+      // This callback will be called when `vm.a` changes
+    })
+</script>
+
+
+
+<!-- instance lifecycle hooks -->
+<!-- created, mounted, updated, destroyed -->
+<script>
+    new Vue({
+      data: {
+        a: 1
+      },
+      created: function () {
+        // `this` points to the vm instance
+        console.log('a is: ' + this.a)
+      }
+    })
+    // => "a is: 1"
+</script>
+<!-- full digram
+    https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+-->
+
+
+<!-- passing argument after column: into a directive -->
+<a v-bind:href="url"></a>
+
+
+
+
+<!-- AJAX calls and watch -->
+<div id="watch-example">
+  <p>
+    Ask a yes/no question:
+    <input v-model="question">
+  </p>
+  <p>{{ answer }}</p>
+</div>
+<!-- Since there is already a rich ecosystem of ajax libraries    -->
+<!-- and collections of general-purpose utility methods, Vue core -->
+<!-- is able to remain small by not reinventing them. This also   -->
+<!-- gives you the freedom to use what you're familiar with. -->
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script>
+var watchExampleVM = new Vue({
+  el: '#watch-example',
+  data: {
+    question: '',
+    answer: 'I cannot give you an answer until you ask a question!'
+  },
+  watch: {
+    // whenever question changes, this function will run
+    question: function (newQuestion) {
+      // placeholder
+      this.answer = 'Waiting for you to stop typing...'
+      // get computed answer based on user input
+      this.getAnswer()
+    }
+  },
+  methods: {
+    // _.debounce is a function provided by lodash to limit how
+    // often a particularly expensive operation can be run.
+    // In this case, we want to limit how often we access
+    // yesno.wtf/api, waiting until the user has completely
+    // finished typing before making the ajax request. To learn
+    // more about the _.debounce function (and its cousin
+    // _.throttle), visit: https://lodash.com/docs#debounce
+    getAnswer: _.debounce(
+      // debounce takes 2 parameters, a function and how long to wait in miliseconds
+      function () {
+        if (this.question.indexOf('?') === -1) {
+          this.answer = 'Questions usually contain a question mark. ;-)'
+          return
+        }
+        this.answer = 'Thinking...'
+        var vm = this
+        // axios is a JSON placeholder
+        axios.get('https://yesno.wtf/api')
+          .then(function (response) {
+            // vm.answer is always no
+            vm.answer = _.capitalize(response.data.answer)
+          })
+          .catch(function (error) {
+            vm.answer = 'Error! Could not reach the API. ' + error
+          })
+      },
+      // This is the number of milliseconds we wait for the user to stop typing.
+      // this is a second parameter of debounce
+      500
+    )
+  }
+})
+</script>
+
+
+
+
+
+<!-- interaction with keyboard -->
+<input id="keyclear" @keyup.enter="warn('pressed Enter.', $event)" placeholder="Press Enter Key">
+<script>
+    var a1 = new Vue({
+        el: '#keyclear',
+        methods: {
+            warn: function(message, event) {
+                if(event) event.preventDefault()
+                alert(message)
+            }
+        }
+    })
+</script>
+<!-- other keys
+.tab
+.delete (captures both “Delete” and “Backspace” keys)
+.esc
+.space
+.up
+.down
+.left
+.right
+-->
+
+<br><br>
+
+<!-- single line and multi line text -->
+
+<input v-model="message" placeholder="edit me">
+<p id="app8">Message is: {{ message }}</p>
+<script>
+    var text = new Vue({
+        el: '#app8',
+        data: {
+            message: ''
+        }
+    })
+</script>
+
+
+<span>Multiline message is:</span>
+<p style="white-space: pre-line;" id="text">{{ message }}</p>
+<br>
+<textarea v-model="message" placeholder="add multiple lines"></textarea>
+
+
+
+<!-- checkbox -->
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
+
+
+
+<!-- register global component -->
+<script>
+    Vue.component('tag-name', {
+        template: '<div>A custom component</div>'
+    })
+</script>
+
+
+
+
+</body>
+</html>
