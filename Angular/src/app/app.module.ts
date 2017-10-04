@@ -8,6 +8,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import { TitleCasePipe } from './title-case.pipe';
+import { FavouriteComponent } from './favourite/favourite.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { TitleCasePipe } from './title-case.pipe';
     CoursesComponent,
     CourseComponent,
     SummaryPipe,
-    TitleCasePipe
+    TitleCasePipe,
+    FavouriteComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,

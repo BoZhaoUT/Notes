@@ -1,2 +1,14 @@
 <h1>Angular</h1>
 <courses></courses>
+<favourite [is-favourite]="post.isFavourite" (change)="onFavouriteChanged($event)"></favourite>
+
+<bootstrap-panel>
+    <!-- these class names are defined in bootstrap-panel component using ngContent -->
+    <!-- ng-container will be replaced by its content 
+        e.g. Heading, and <h2>Body</h2><p>Can also pass HTML here as input</p> -->
+    <ng-container class="heading">Heading</ng-container>
+    <ng-container class="body">
+        <h2>Body</h2>
+        <p>Can also pass HTML here as input</p>
+    </ng-container>
+</bootstrap-panel>
