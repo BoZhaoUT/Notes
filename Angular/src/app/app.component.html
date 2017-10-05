@@ -12,3 +12,25 @@
         <p>Can also pass HTML here as input</p>
     </ng-container>
 </bootstrap-panel>
+
+<like [likes-count]="15" [is-liked]="false"></like>
+
+<!-- ngIf will not create DOM, hidden will create DOM and hide them -->
+<div *ngIf="courses.length > 0; then courseList else noCourses"></div>
+<ng-template #courseList>
+    List of courses
+</ng-template>
+<ng-template #noCourses>
+    No courses yet
+</ng-template>
+
+<div [hidden]="courses.length !== 0">
+    Some courses
+</div>
+
+<!-- ? is a safe traversal operator
+    no error if assignee is undefined
+    Angular will render an empty span -->
+<span>
+    {{ post.assignee?.name }}
+</span>

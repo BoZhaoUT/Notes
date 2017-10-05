@@ -8,11 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular app';
+  courses = [1];
 
   post = {
     title: 'a title',
-    isFavourite: true
+    isFavourite: true,
+    assignee: null
   }
+
+
 
   // data type helps compile checking and IntelliSense
   onFavouriteChanged(eventArgs: FavouriteChangedEventArgs) {

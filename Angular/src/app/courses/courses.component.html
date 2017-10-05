@@ -1,0 +1,70 @@
+<h2>{{ "Title: " + title }}</h2>
+<ul>
+    <li *ngFor="let course of courses">
+        {{ course.name }}
+    </li>
+</ul>
+<img [src]="imgUrl" />
+<table>
+    <tr>
+        <!-- sometimes need to add special prefix attr. -->
+        <td [attr.colspan]="colSpan"></td>
+    </tr>
+</table>
+<div (click)="onDivClicked()">
+    <button 
+        class="btn btn-primary" 
+        [class.active]="isActive"
+        [style.backgroundColor]="isActive ? 'orange' : 'black'"
+        (click)="onSave($event)">
+        Save
+    </button>
+</div>
+<!-- Angular can bind an event to a special condition
+     such as enter key in keyup event -->
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()">
+
+<!-- pipes -->
+{{ course.title | uppercase | lowercase }} <br>
+<!-- number pipe add , for readability -->
+{{ course.students | number }} <br>
+{{ course.rating | number:'1.2-2'}} <br>
+<!-- true will display currency symbol -->
+{{ course.price | currency:'AUD':true }} <br>
+{{ course.relaseDate | date:'longDate' }} <br>
+
+<div>
+    <!-- costum pipe -->
+    {{ text | summary:30 }}
+</div>
+
+
+<br>
+
+<input type="text" [(ngModel)]="movieTitle">
+<br>
+{{ movieTitle | titleCase }}
+
+<button (click)="onAdd()">
+    Add
+</button>
+<ul>
+    <!-- trackBy is a special keyword in Angular,
+        by default, Angular tracks object by memory location
+        i.e. each time button load course is clicked
+        Angular will re-render its associate DOM
+        set trackBy to course.id will stop loading same object 
+        only use trackBy if list is big
+    -->
+    <li *ngFor="let course of courses; trackBy: trackCourse">
+        {{ course.name }}
+        <button (click)="onRemove(course)">
+            Remove
+        </button>
+    </li>
+</ul>
+
+<button (click)="loadCourses()">
+    Load Courses
+</button>
+
