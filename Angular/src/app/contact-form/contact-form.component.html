@@ -1,0 +1,96 @@
+
+<!-- template driven form -->
+<!-- add a reference to ngForm directive
+    Angular automatically binds ngForm to <form></form> -->
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <!-- optional: ngModelGroup will gruop input with related nformation 
+      for example, a person's contact has first name, last name and email -->
+  <div ngModelGroup="contact" #cibtact="ngModelGroup">
+    <div class="form-group">
+      <label for="firstName">
+        First Name
+      </label>
+      <!-- 
+          ngModel will create a form control object
+          #firstName="ngModel" add a reference to this form control object
+          in order to validate a form, there will be one form control object for each input
+          and oen form group for each <form></form> -->
+      <!-- in order to have a validate an input field, a form control object must be craeted
+          i.e. this input must have ngModel and name="modelName" 
+        -->
+      <input 
+        required
+        ngModel 
+        name="fistName" 
+        #firstName="ngModel"
+        pattern="regular expression"
+        minlength="3"
+        (change)="log(firstName)" 
+        type="text" 
+        id="firstName" class="form-control">
+      <div 
+        *ngIf="firstName.touched && !firstName.valid"
+        class="alert alert-danger">
+        <div *ngIf="firstName.errors.required">
+            First name is required.
+        </div>
+        <div *ngIf="firstName.errors.minlength">
+          First name should be minimum {{ firstName.errors.minlength.requiredLength}} characters.
+        </div>
+        <div *ngIf="firstName.errors.pattern">
+          First name doesn't match the pattern.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">
+      Comment
+    </label>
+    <textarea ngModel name="comment"
+      id="comment" cols="30" rows="10" class="form-control" placeholder="">
+    </textarea>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubscribed"> Subscribe to mailing list
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="contactMethod">
+      Contact Method
+    </label>
+    <!-- multiple will allow users select more than 1 options in an ugly way
+        i.e. press ctrl to select multiple options -->
+    <select 
+      multiple
+      id="contactMethod" 
+      class="form-control" 
+      ngModel 
+      name="contactMethod">
+      <!-- a null option -->
+      <option value=""></option>
+      <!-- [ngValue] can bind a object to property value
+          [value] can only take strings -->
+      <option *ngFor="let method of contactMethods" [ngValue]="method">
+        {{ method.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="radio" *ngFor="let method of contactMethods">
+    <label for="">
+      <input type="radio" name="contactMethod" [value]="method.id">
+      {{ method.name }}
+    </label>
+  </div>
+
+  <!-- for debuggin only -->
+  <p>
+    {{ f.value | json }}
+  </p>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    Submit
+  </button>
+</form>
