@@ -56,3 +56,18 @@
     
   </div>
 </form>
+
+<!-- dynamically create some fields in a form -->
+<form>
+  <!-- #topic is a template variable, it reference to this input tag -->
+  <input type="text" class="form-control"
+    (keyup.enter)="addTopic(topic)" #topic>
+  <ul class="list-group">
+    <li 
+      *ngFor="let topic of topics.controls"
+      (click)="removeTopic(topic)"
+      class="list-group-item">
+      {{ topic.value }}
+    </li>
+  </ul>
+</form>
