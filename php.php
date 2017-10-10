@@ -63,7 +63,7 @@
     str_word_count("Hello world!"); // outputs 2
 
     # reverse a string
-    sttrev("123");
+    strrev("123");
 
     # serach a word
     # return the index of the beginning of the word
@@ -76,5 +76,92 @@
 
     # complete reference
     # https://www.w3schools.com/php/php_ref_string.asp
+
+
+    # constants
+    # all constants are global
+    define("var_name", "value"); // var name is case-sensitive
+    define("var_name2", "value", true); // var name is case-insensitive
+
+
+    # logical operators
+    # PHP supports xor
+    # and === &&
+    # or === ||
+    # use ! to negate a value
+
+    # string operators
+    # to concatenate two strings
+    # use . and .=
+    # "123" . "456" outputs "123456"
+    # $txt1 .= $txt2
+
+
+    # foreach loop
+    $colors = array("red", "green", "blue", "yellow"); 
+    
+    foreach ($colors as $value) {
+        echo "$value <br>";
+    }
+
+    # define functions
+    # last_name is an optional parameter
+    function full_name($first_name, $last_name = "Smith") {
+        return "$first_name $last_name";
+    }
+
+    echo full_name("John", "Smith");
+
+    # arrays
+    # indexed array
+    $cars = array("Volvo", "BMW", "Toyota");
+    echo count($cars); // return the length of this array
+
+    # for loop
+    for($x = 0; $x < $arrlength; $x++) {
+        echo $cars[$x];
+        echo "<br>";
+    }
+
+    # associative array
+    $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+    echo "Peter is " . $age['Peter'] . " years old.";
+
+    foreach($age as $key => $value) {
+        echo "Key=" . $key . ", Value=" . $value;
+        echo "<br>";
+    }
+
+    # complete array reference
+    # https://www.w3schools.com/php/php_ref_array.asp
+
+
+    # superglobals
+    # Returns the filename of the currently executing script
+    echo $_SERVER['PHP_SELF']; // 
+    # Returns the version of the Common Gateway Interface (CGI) the server is using
+    echo $_SERVER['SERVER_NAME'];
+
+    # complte reference
+    # https://www.w3schools.com/php/php_superglobals.asp
+
+
+    # submit and handle form request
+    /*
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+        Name: <input type="text" name="fname">
+        <input type="submit">
+    </form>
+    */
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // collect value of input field
+        $name = $_REQUEST['fname'];
+        if (empty($name)) {
+            echo "Name is empty";
+        } else {
+            echo $name;
+        }
+    }
 
 ?>
