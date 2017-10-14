@@ -1,0 +1,2 @@
+// add to dev dependency
+npm i -D dependency_name
