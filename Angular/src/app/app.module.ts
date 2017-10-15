@@ -1,3 +1,4 @@
+import { GithubFollowersService } from './services/github-followers.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { ErrorHandler } from '@angular/core';
 import { LikeService } from './like/like.service';
@@ -22,6 +23,7 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { PostsComponent } from './posts/posts.component';
     NewCourseFormComponent,
     SignupFormComponent,
     ChangePasswordComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { PostsComponent } from './posts/posts.component';
   providers: [
     CoursesService,
     LikeService,
+    GithubFollowersService,
     // replace default built-in class ErrorHandler by customized AppErrorHandler
     // { provide: "class to be replaced", useClass: new class }
     { 
