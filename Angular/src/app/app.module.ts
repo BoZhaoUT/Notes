@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
@@ -24,6 +25,11 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -42,13 +48,32 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
     SignupFormComponent,
     ChangePasswordComponent,
     PostsComponent,
-    GithubFollowersComponent
+    GithubFollowersComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent,
+    ArchiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      // path is the path after root path /
+      // component is the component to be rendered
+      // note: the order of these routes matters
+      // if the '**' is the first route, then nothing else will be rendered
+      { path: '', component: HomeComponent },
+      // more specific route go first
+      { path: 'followers/:id/:username', component: GithubProfileComponent },
+      { path: 'followers', component: GithubFollowersComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: 'archive/:year/:month', component: ArchiveComponent },
+      // ** match everything
+      { path: '**', component: NotFoundComponent }
+    ])
   ],
   providers: [
     CoursesService,

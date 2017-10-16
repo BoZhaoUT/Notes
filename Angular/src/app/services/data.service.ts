@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 // Observable.throw() is a factory method as it createa a new object
 import 'rxjs/add/observable/throw';
 
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class DataService {
