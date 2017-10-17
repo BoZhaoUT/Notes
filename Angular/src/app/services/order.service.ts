@@ -9,15 +9,15 @@ export class OrderService {
   constructor(private http: Http) {
   }
 
-  getOrders() { 
+  getOrders() {
     // create a header and store token in it
-    let headers = new Headers();
-    let token = localStorage.getItem('token');
+    const headers = new Headers();
+    const token = localStorage.getItem('token');
     headers.append('Authorization', 'Bearer ' + token);
 
     // include this in request
-    let options = new RequestOptions({ headers: headers });
-    
+    const options = new RequestOptions({ headers: headers });
+
     return this.http.get('/api/orders', options)
       .map(response => response.json());
   }

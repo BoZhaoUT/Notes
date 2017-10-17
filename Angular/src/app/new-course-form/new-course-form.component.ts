@@ -29,9 +29,9 @@ export class NewCourseFormComponent {
   });
 
   categories = [
-    {id: 1, name: "Development"},
-    {id: 2, name: "Art"},
-    {id: 3, name: "Languages"}
+    {id: 1, name: 'Development'},
+    {id: 2, name: 'Art'},
+    {id: 3, name: 'Languages'}
   ];
 
   // add a new topic
@@ -42,7 +42,7 @@ export class NewCourseFormComponent {
 
   // remove a given topic
   removeTopic(topic: FormControl) {
-    let index = this.topics.controls.indexOf(topic);
+    const index = this.topics.controls.indexOf(topic);
     this.topics.removeAt(index);
   }
 

@@ -15,7 +15,7 @@ export class AuthService {
     return this.http.post('/api/authenticate',
       JSON.stringify(credentials))
         .map(response => {
-          let result = response.json();
+          const result = response.json();
           // valid JWT with a token
           if (result && result.token) {
             localStorage.setItem('token', result.token);
@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   logout() {
-  
+
     // delete token
     localStorage.removeItem('token');
   }
@@ -51,11 +51,11 @@ export class AuthService {
   }
 
   get currentUser() {
-    let token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (!token)
       return null;
 
-    let jwtHelper = new JwtHelper();
+    const jwtHelper = new JwtHelper();
     return jwtHelper.decodeToken(token);
 
   }

@@ -15,7 +15,7 @@ export class GithubProfileComponent implements OnInit {
     this.route.paramMap
       .subscribe(params => {
         // 'id' is the name of a key defined in router in app.module
-        let id = params.get('id');
+        const id = params.get('id');
         console.log(id);
       })
 

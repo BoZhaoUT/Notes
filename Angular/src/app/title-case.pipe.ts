@@ -8,11 +8,11 @@ export class TitleCasePipe implements PipeTransform {
   transform(value: string): any {
     if (!value)
       return null;
-    
-    let prepositions = ['of', 'the']
 
-    let words = value.split(' ');
-    for (var i = 0; i < words.length; i++) {
+    const prepositions = ['of', 'the']
+
+    const words = value.split(' ');
+    for (let i = 0; i < words.length; i++) {
       if (prepositions.includes(words[i]) && i !== 0) {
         words[i] = words[i].toLowerCase()
       } else {

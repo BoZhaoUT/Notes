@@ -11,12 +11,12 @@ export class ArchiveComponent implements OnInit {
   month: number;
 
 
-  constructor(private route: ActivatedRoute, private router: Router) { 
+  constructor(private route: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit() {
-    let params = this.route.snapshot.paramMap;
+    const params = this.route.snapshot.paramMap;
     // adding a PLUS + symbol will change the data type to number
     this.year = +params.get('year');
     this.month = +params.get('month');

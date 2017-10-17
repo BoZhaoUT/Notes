@@ -15,7 +15,7 @@ export class InputFormatDirective {
   // DOM object
   @HostListener('blur') onBlur() {
     // in this example, value will be text of input tag
-    let value: string = this.el.nativeElement.value;
+    const value: string = this.el.nativeElement.value;
 
     if (this.format == 'lowercase')
       this.el.nativeElement.value = value.toLocaleLowerCase();

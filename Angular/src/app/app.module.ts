@@ -107,7 +107,7 @@ import { NoAccessComponent } from './no-access/no-access.component';
     AuthHttp,
     // replace default built-in class ErrorHandler by customized AppErrorHandler
     // { provide: "class to be replaced", useClass: new class }
-    { 
+    {
       provide: ErrorHandler,
       useClass: AppErrorHandler
     }

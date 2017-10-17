@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     { year: 2017, month: 3}
   ]
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

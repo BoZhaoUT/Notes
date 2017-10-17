@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./like.component.css']
 })
 export class LikeComponent implements OnInit {
-  @Input('is-liked') isLiked: boolean = false;
+  @Input('is-liked') isLiked = false;
   @Input('likes-count') likesCount: number = this._service.getLikesCount();
 
   constructor(private _service: LikeService) { }

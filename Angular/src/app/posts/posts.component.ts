@@ -16,24 +16,24 @@ export class PostsComponent implements OnInit {
 
 
 
-  constructor(private service: PostService) { 
+  constructor(private service: PostService) {
     // note: do not initialize http reqeusts here
     // do it in ngOnInit()
   }
 
   // create operation
   createPost(input: HTMLInputElement) {
-    let post = {
+    const post = {
       title: input.value
     };
     // assume create will succeed in order to give
     // users optimistic experience
     // i.e. avoid being pessimistic(hopeless)
     // the line below will addHead()
-    this.posts.splice(0, 0, post) 
+    this.posts.splice(0, 0, post)
 
     input.value = '';
-    
+
     this.service.create(post)
       // this.service.createPost() will return an Observable object
       // use .subscribe() to get the result
@@ -45,7 +45,7 @@ export class PostsComponent implements OnInit {
           // cannot use post.id = response.json().id here
           // because post.id is not defined in post
           post['id'] = newPost.id;
-        }, 
+        },
         (error: AppError) => {
           // remove the added item
           this.posts.splice(0, 1);
@@ -54,7 +54,7 @@ export class PostsComponent implements OnInit {
             // in case there is a form named this.form
             // this.form.setErrors(error.originalError)
           }
-          else 
+          else
             // if not throwing this error
             // then this error will be handled here and
             // this error will not be handled by the global error handler
@@ -73,13 +73,13 @@ export class PostsComponent implements OnInit {
 
   // delete operation
   deletePost(post) {
-    let index = this.posts.indexOf(post);
+    const index = this.posts.indexOf(post);
     // remove an item at index
     this.posts.splice(index, 1);
 
     this.service.delete(post.id)
       .subscribe(
-        null, 
+        null,
         // must use a paif of parathesis when specifying the data type of a variable
         // the data type of this callback functions is Response
         (error: AppError) => {
@@ -109,7 +109,7 @@ export class PostsComponent implements OnInit {
         // since the error handler below is removed
         // then any error will propagate and eventually
         // get handled by a global error handler
-        // , 
+        // ,
         // error => {
         //   alert('An unexpected error occured.');
         //   console.log(error);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from "./courses.service";
+import { CoursesService } from './courses.service';
 
 @Component({
   selector: 'courses',
@@ -8,17 +8,17 @@ import { CoursesService } from "./courses.service";
 })
 export class CoursesComponent{
 
-  title = "List of courses";
+  title = 'List of courses';
   courses;
-  imgUrl = "http://lorempixel.com/400/200";
+  imgUrl = 'http://lorempixel.com/400/200';
   colSpan = 2;
   isActive = true;
-  email = "me@example.com";
+  email = 'me@example.com';
   text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
-  movieTitle = "";
+  movieTitle = '';
   // service: CoursesService means let Angular create an instance of CoursesService
   // equivalent to let service = new CoursesService();
-  constructor(service: CoursesService) {
+  constructor(private service: CoursesService) {
       this.courses = service.getCourses();
   }
   // note: this Courses depends on CoursesService.
@@ -29,11 +29,11 @@ export class CoursesComponent{
       // stopPropagation will disable all other (click) bindings from
       // this component's parents, e.g. onDivClicked()
       $event.stopPropagation();
-      console.log("Button was clicked", $event);
+      console.log('Button was clicked', $event);
   }
 
   onDivClicked() {
-      console.log("Div was clicked");
+      console.log('Div was clicked');
   }
 
   onKeyUp() {
@@ -41,7 +41,7 @@ export class CoursesComponent{
   }
 
   course = {
-      title: "The Complete Angular Course",
+      title: 'The Complete Angular Course',
       rating: 3.1415926,
       students: 30123,
       price: 120.12,
@@ -53,7 +53,7 @@ export class CoursesComponent{
   }
 
   onRemove(course) {
-    let index = this.courses.indexOf(course);
+    const index = this.courses.indexOf(course);
     // remove item by index
     this.courses.splice(index, 1)
   }
@@ -61,6 +61,10 @@ export class CoursesComponent{
   trackCourse(index, course) {
     // if course is given, then use it
     // otherwise return undefined
-    return course ? course.id: undefined;
+    return course ? course.id : undefined;
+  }
+
+  loadCourses() {
+    this.courses = this.service.getCourses();
   }
 }

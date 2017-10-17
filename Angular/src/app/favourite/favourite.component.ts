@@ -11,7 +11,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } fro
 export class FavouriteComponent {
   // @Input means apply Input decorator on this variable
   // 'is-favourite' is an alias
-  @Input('is-favourite') isFavourite: boolean = false;
+  @Input('is-favourite') isFavourite = false;
   // 'change' is an alias of event emitter
   // both Input and Output aliasing are optional
   // they keep API more stable

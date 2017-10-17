@@ -17,8 +17,8 @@ export class ChangePasswordComponent {
     // second: extra validator for more than one input fileds
     this.myForm = formBuilder.group({
       oldPassword: [
-        '', 
-        Validators.required, 
+        '',
+        Validators.required,
         PasswordValidators.validOldPassword
       ],
       newPassword: ['', Validators.required],

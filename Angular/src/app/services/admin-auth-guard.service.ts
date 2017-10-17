@@ -9,12 +9,12 @@ export class AdminAuthGuard implements CanActivate {
 
   // only grant permission if user is an admin
   canActivate() {
-    let user = this.authService.currentUser;
+    const user = this.authService.currentUser;
 
     // if user logged in and user is an admin
     if (user && user.admin)
       return true;
-    
+
     this.router.navigate(['/no-access']);
     return false;
   }

@@ -1,4 +1,4 @@
-import { ErrorHandler } from "@angular/core";
+import { ErrorHandler } from '@angular/core';
 
 // this will be a global error handler
 export class AppErrorHandler implements ErrorHandler {

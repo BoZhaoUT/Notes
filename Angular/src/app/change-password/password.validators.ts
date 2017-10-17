@@ -13,8 +13,8 @@ export class PasswordValidators {
 
     // check if new password and confirm password match
     static passwordShouldMatch(control: AbstractControl) {
-        let newPassword = control.get('newPassword');
-        let confirmPassword = control.get('confirmPassword');
+        const newPassword = control.get('newPassword');
+        const confirmPassword = control.get('confirmPassword');
 
         if (newPassword.value !== confirmPassword.value)
             return { passwordShouldMatch: true };

@@ -8,10 +8,21 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod",
+    "_comment1": "base-href will set base url in base element in index.html",
+    "_comment2": "ngh stands for angular-cli-github-pages, a host for front-end only",
+    "_comment3": "use && to connect commands on seperate lines",
+    "deploy:gh": "ng build --prod --base-href='https://bozhaoutsc.github.io/myapp/' && ngh",
+    "deploy:firebase": "ng build --prod && firebase deploy"
   },
   "private": true,
+  "_comment1": "the first dependencies are required to deploy on heroku",
+  "_comment2": "put them into devDependencies if deploying on a different platform",
   "dependencies": {
+    "@angular/cli": "1.1.1",
+    "@angular/compiler-cli": "^4.0.0",
+    "typescript": "~2.3.3",
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -28,8 +39,6 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.1.1",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
@@ -44,7 +53,6 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
-    "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "tslint": "~5.3.2"
   }
 }

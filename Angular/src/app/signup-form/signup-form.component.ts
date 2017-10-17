@@ -19,7 +19,7 @@ export class SignupFormComponent {
       Validators.required,
       Validators.minLength(3),
       UsernameValidators.cannotContainSpace
-      ], 
+      ],
       UsernameValidators.shouldBeUnique
     ),
     password: new FormControl('', Validators.required)
@@ -36,7 +36,7 @@ export class SignupFormComponent {
   get username() {
     return this.myForm.get('username');
   }
-  
+
   login() {
     this.myForm.setErrors({
       invalidLogin: true
