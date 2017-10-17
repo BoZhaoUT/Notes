@@ -1,0 +1,11 @@
+// login as a user
+heroku login
+
+// create an app with a random name
+heroku create
+
+// show a list of apps created
+heroku apps
+
+// open created app
+heroku open name_of_the_app

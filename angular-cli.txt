@@ -1,0 +1,17 @@
+// generate new component
+ng g c component_name
+
+// generate new service
+ng g c service_name
+
+// build product code
+ng build --prod
+
+// serve with non-development environment
+ng serve --environment=environment_name
+
+// run linter
+ng lint
+
+// automatically fix easy problems
+ng lint --fix

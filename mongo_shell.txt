@@ -1,0 +1,18 @@
+// show current db
+db
+
+// show all dbs
+show dbs
+
+// switch to a db
+use db_name
+
+// show collections in current db
+show collections
+
+// add a reference to a collection
+my_collection = db.collection_name
+
+// list all objects in a collection
+db.collection.find()   or    db.collection.find().pretty()
+
