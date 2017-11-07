@@ -3,6 +3,7 @@ Github
 -- first time
 create a new project on git
 git clone 						get a copy of a project from server
+git remote add origin   https://github.com/.../.git
 
 --
 make some changes
@@ -23,3 +24,7 @@ git diff head~2 head			show difference between the most recent
 
 git checkout -- file_name		disgard all changes in file_name
 git checkout -- .				disgard changes in all files
+
+-- changed a commit message
+git commit --amend              change last local commit message
+git push --force                push the changed commit message
