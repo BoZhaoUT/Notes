@@ -28,3 +28,6 @@ git checkout -- .				disgard changes in all files
 -- changed a commit message
 git commit --amend              change last local commit message
 git push --force                push the changed commit message
+
+-- disgard one unpushed commit
+git reset --hard head~
