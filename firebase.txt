@@ -1,0 +1,8 @@
+// login in terminal
+firebase login
+
+// initialize firebase
+firebase init
+
+// deploy the app
+firebase deploy
