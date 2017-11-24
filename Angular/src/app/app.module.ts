@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { AuthHttp, provideAuth } from 'angular2-jwt';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -17,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
@@ -69,6 +72,8 @@ import { NoAccessComponent } from './no-access/no-access.component';
     NoAccessComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

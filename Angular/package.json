@@ -20,12 +20,11 @@
   "_comment1": "the first dependencies are required to deploy on heroku",
   "_comment2": "put them into devDependencies if deploying on a different platform",
   "dependencies": {
-    "@angular/cli": "1.1.1",
-    "@angular/compiler-cli": "^4.0.0",
-    "typescript": "~2.3.3",
     "@angular/animations": "^4.0.0",
+    "@angular/cli": "1.1.1",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
@@ -33,9 +32,12 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angular2-jwt": "^0.2.3",
+    "angularfire2": "^5.0.0-rc.4",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "firebase": "^4.6.2",
     "rxjs": "^5.1.0",
+    "typescript": "~2.3.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
