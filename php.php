@@ -163,5 +163,7 @@
             echo $name;
         }
     }
+    $json = array('abc'=>'123', 'ac'=>'adc');
+
 
 ?>
