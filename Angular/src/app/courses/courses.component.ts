@@ -14,8 +14,16 @@ export class CoursesComponent{
   colSpan = 2;
   isActive = true;
   email = 'me@example.com';
-  text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
+  text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry stand';
   movieTitle = '';
+    course = {
+      title: 'The Complete Angular Course',
+      rating: 3.1415926,
+      students: 30123,
+      price: 120.12,
+      relaseDate: new Date(2017, 10, 1)
+  }
+
   // service: CoursesService means let Angular create an instance of CoursesService
   // equivalent to let service = new CoursesService();
   constructor(private service: CoursesService) {
@@ -38,14 +46,6 @@ export class CoursesComponent{
 
   onKeyUp() {
       console.log(this.email);
-  }
-
-  course = {
-      title: 'The Complete Angular Course',
-      rating: 3.1415926,
-      students: 30123,
-      price: 120.12,
-      relaseDate: new Date(2017, 10, 1)
   }
 
   onAdd() {
