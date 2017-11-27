@@ -43,6 +43,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { NoAccessComponent } from './no-access/no-access.component';
+import { FirebaseComponent } from './firebase/firebase.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { NoAccessComponent } from './no-access/no-access.component';
     ArchiveComponent,
     AdminComponent,
     LoginComponent,
-    NoAccessComponent
+    NoAccessComponent,
+    FirebaseComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
