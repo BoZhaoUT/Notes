@@ -1,0 +1,25 @@
+<div class="zippy">
+  <div 
+    class="zippy-heading"
+    [class.expanded]="isExpanded"
+    (click)="toggle()">
+    {{ title }}
+    <span class="glyphicon"
+      [ngClass]="{
+        'glyphicon-chevron-up': isExpanded,
+        'glyphicon-chevron-down': !isExpanded
+      }"
+    ></span>
+  </div>
+  <!-- in order to animate a component always exists, define some custom states,
+      then use property banding to set animation trigger, the trigger will determine
+      which transition will run
+      e.g. when isExpanded is true, then state === expanded
+          when isExpanded is false, then state === collapsed
+  -->
+  <div 
+    [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'"
+    class="zippy-body">
+    <ng-content></ng-content>
+  </div>
+</div>
