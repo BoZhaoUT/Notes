@@ -1,0 +1,13 @@
+// gradle console commands
+
+// clean dependencies
+gradle clean
+
+// build dependencies
+gradle build
+
+// clean and build
+gradle clean build
+
+// run application
+gradle run
