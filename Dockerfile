@@ -5,7 +5,7 @@ FROM image_name:tag
 # copy source code into designed destination in image file
 COPY . /var/www/html
 
-# listen to a port
+# listen to a port, EXPOSE does not have real effect, port will be published by run -p
 EXPOSE 80
 
 # docker terminal commands
@@ -36,6 +36,9 @@ EXPOSE 80
 
 # run with a connection to shell in container
 # docker run -t
+
+# run with mounted volume
+#docker run -v abs_path_local:abs_path_container -p 9080:9080 backend-demo
 
 # get running docker process (including their names)
 # docker ps
