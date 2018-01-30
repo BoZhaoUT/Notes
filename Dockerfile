@@ -48,3 +48,6 @@ EXPOSE 80
 
 # ssh into a docker container
 # docker exec -it docker_process_name /bin/bash
+
+# remove all docker images
+# docker rmi -f $(docker images -a -q)
