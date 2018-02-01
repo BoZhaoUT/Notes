@@ -51,3 +51,9 @@ EXPOSE 80
 
 # remove all docker images
 # docker rmi -f $(docker images -a -q)
+
+# clean up after run
+# docker run --rm
+
+# run a container with WORKDIR
+# docker run -w /path/to/workdir
