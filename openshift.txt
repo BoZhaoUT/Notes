@@ -1,0 +1,66 @@
+# reference
+https://github.com/kubernetes/kubernetes/blob/master/examples/simple-nginx.md
+
+kubectl version
+# on success
+# Client Version: version.Info{Major:"1", Minor:"3", GitVersion:"v1.3.0+52492b4", 
+# GitCommit:"52492b4", GitTreeState:"clean", BuildDate:"2016-09-23T18:27:23Z", 
+# GoVersion:"go1.6.3", Compiler:"gc", Platform:"linux/amd64"}
+# Server Version: version.Info{Major:"1", Minor:"3", GitVersion:"v1.3.0+52492b4", 
+# GitCommit:"52492b4", GitTreeState:"clean", BuildDate:"2016-09-23T18:27:23Z", 
+# GoVersion:"go1.6.3", Compiler:"gc", Platform:"linux/amd64"}
+
+1. create a new namespace
+kubectl create -f ./kubedemo-namespace.yaml
+# on success: namespace "kubedemo" created
+
+# sample kubedemo-namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubedemo
+
+
+2. create pod
+# --namespace: project name
+# --image: docker image name
+# --port: port number on vagrant/virtual machine
+# kubectl run: create and run an docker image
+# mynode: a custom name of this deployment
+kubectl --namespace=kubedemo run hello-world --image=hello-world:v1 --port=8000
+# on success: deployment "hello-world" created
+
+2.1 create replication controller
+kubectl create -f ./replication.yaml
+
+# check replication controller status
+kubectl describe replicationcontrollers/hello-world
+
+# check pods status
+kubectl get pods
+
+# check deployments status
+kubectl get deployment
+
+
+3. add a public ip to the pods
+# --namespace: project name
+# --type
+kubectl --namespace=kubedemo expose deployment mynode --type=LoadBalancer --port=8000
+# on success: service "mynode" exposed
+
+
+# get external ip address of the pods
+kubectl get services
+
+# delete deployment/pod/service
+kubectl delete deployment name_of_deployment/pod/service
+
+
+
+# add access to user
+# e.g. add view access to <project_name>:<service_name>
+# a service account is a component in a project, unless regular users
+# a component(service) doesn't have credentials
+oc policy add-role-to-user view system:serviceaccount:project_name:service_name
+
