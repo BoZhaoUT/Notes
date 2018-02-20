@@ -1,0 +1,1 @@
+curl -uadmin:admin -T /app/build/libs/backend.war "http://52.233.32.176:8081/artifactory/simple-local/backend-1.0.war"
