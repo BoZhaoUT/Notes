@@ -12,9 +12,13 @@ class ViewController: UIViewController {
     
 
     // side menu
-    var showSideMenu = false
+    var isShowingSideMenu = false
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
 
+    // to show side menu
+    @IBAction func swipeRight(_ sender: Any) {
+        showSideMenu()
+    }
     
     // to hide side menu
     @IBAction func tapOutside(_ sender: Any) {
@@ -33,14 +37,13 @@ class ViewController: UIViewController {
     
     @IBAction func humbergerButton(_ sender: Any) {
         // to hide side menu
-        if (showSideMenu) {
+        if (isShowingSideMenu) {
             hideSideMenu()
         // to show side menu
         } else {
-            leadingConstraint.constant = 0
-            toggleSideMenuanimation()
+            showSideMenu()
         }
-        showSideMenu = !showSideMenu
+        isShowingSideMenu = !isShowingSideMenu
     }
     
     override func viewDidLoad() {
@@ -52,6 +55,11 @@ class ViewController: UIViewController {
         if (recognizer.state == .recognized) {
             self.humbergerButton(self)
         }
+    }
+    
+    func showSideMenu() {
+        leadingConstraint.constant = 0
+        toggleSideMenuanimation()
     }
     
     func hideSideMenu() {
