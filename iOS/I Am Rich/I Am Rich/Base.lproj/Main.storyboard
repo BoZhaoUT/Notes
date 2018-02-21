@@ -54,9 +54,6 @@
                                     <constraint firstItem="8zA-Bh-aEq" firstAttribute="leading" secondItem="C40-M5-kcI" secondAttribute="leading" constant="21" id="gsc-bE-YiV"/>
                                     <constraint firstItem="8zA-Bh-aEq" firstAttribute="top" secondItem="C40-M5-kcI" secondAttribute="top" constant="100" id="mKZ-Qr-PfG"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="E1R-ye-Ufu" appends="YES" id="98q-0c-3u2"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,6 +71,7 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="T8k-k1-f62" appends="YES" id="woI-4p-aDd"/>
                             <outletCollection property="gestureRecognizers" destination="JQg-7o-zVs" appends="YES" id="XZz-Pc-xOd"/>
+                            <outletCollection property="gestureRecognizers" destination="E1R-ye-Ufu" appends="YES" id="5K7-vx-Msr"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="NMz-bT-Vf9">
@@ -102,8 +100,8 @@
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="E1R-ye-Ufu">
                     <connections>
-                        <action selector="swiftLeftExitSideMenu:" destination="BYZ-38-t0r" id="Tir-2k-3ZW"/>
-                        <outlet property="delegate" destination="C40-M5-kcI" id="OdY-g0-CFB"/>
+                        <action selector="swiftLeftExitSideMenu:" destination="BYZ-38-t0r" id="g5C-vx-hJw"/>
+                        <outlet property="delegate" destination="8bC-Xf-vdC" id="r3d-I9-txo"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
