@@ -24,6 +24,10 @@ class ViewController: UIViewController {
         })
     }
     
+    @IBAction func nextPage(_ sender: Any) {
+        leadingConstraint.constant = -200
+    }
+    
     @IBAction func humbergerButton(_ sender: Any) {
         // to hide side menu
         if (showSideMenu) {
@@ -57,11 +61,6 @@ class ViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

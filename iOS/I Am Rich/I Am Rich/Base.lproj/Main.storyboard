@@ -45,6 +45,7 @@
                                             <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="nextPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="psD-GB-5mw"/>
                                             <segue destination="Cg8-5s-cLD" kind="show" id="1eB-gl-IXb"/>
                                         </connections>
                                     </button>
