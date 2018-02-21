@@ -50,9 +50,11 @@ class ViewController: UIViewController {
         print("image swiped")
     }
     
-    @IBAction func edgePanSwiped(_ sender: Any) {
+    @IBAction func edgePanSwiped(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         print("edge pan swiped")
-        self.humbergerButton(self)
+        if (recognizer.state == .recognized) {
+            self.humbergerButton(self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
