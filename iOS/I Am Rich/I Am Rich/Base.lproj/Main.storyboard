@@ -27,9 +27,6 @@
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="diamond" translatesAutoresizingMaskIntoConstraints="NO" id="26Y-Mv-Twe">
                                 <rect key="frame" x="53" y="250" width="270" height="270"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="eDy-FJ-iOA" appends="YES" id="3c9-He-z2d"/>
-                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C40-M5-kcI">
                                 <rect key="frame" x="-200" y="0.0" width="200" height="667"/>
@@ -51,11 +48,15 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1506149769" green="0.47447472810000002" blue="0.75614959000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="7vM-qc-ZwD"/>
                                     <constraint firstItem="8zA-Bh-aEq" firstAttribute="leading" secondItem="C40-M5-kcI" secondAttribute="leading" constant="21" id="gsc-bE-YiV"/>
                                     <constraint firstItem="8zA-Bh-aEq" firstAttribute="top" secondItem="C40-M5-kcI" secondAttribute="top" constant="100" id="mKZ-Qr-PfG"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="E1R-ye-Ufu" appends="YES" id="98q-0c-3u2"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,11 +88,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="eDy-FJ-iOA">
-                    <connections>
-                        <action selector="imageSwiped:" destination="BYZ-38-t0r" id="j70-Dd-Nsm"/>
-                    </connections>
-                </swipeGestureRecognizer>
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="T8k-k1-f62">
                     <rectEdge key="edges" left="YES"/>
                     <connections>
@@ -104,6 +100,12 @@
                         <action selector="tapOutside:" destination="BYZ-38-t0r" id="xsO-Ma-DXy"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="E1R-ye-Ufu">
+                    <connections>
+                        <action selector="swiftLeftExitSideMenu:" destination="BYZ-38-t0r" id="Tir-2k-3ZW"/>
+                        <outlet property="delegate" destination="C40-M5-kcI" id="OdY-g0-CFB"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="372" y="80.50974512743629"/>
         </scene>
