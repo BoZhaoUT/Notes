@@ -35,6 +35,27 @@ UPDATE customer SET address = '456 Sesame Street', zip = '90001' WHERE id = 5
 -- simple delete
 DELETE FROM customer WHERE id = 5;
 
+-- create a table with colum constraints
+CREATE TABLE test {
+    a   INTEGER NOT NULL,
+    b   TEXT
+    c   TEXT DEFAULT 'panda'
+    d   TEXT UNIQUE
+    e   TEXT UNIQUE NOT NULL    -- some SQL implementation treat NULLs as unique values
+}
+
+-- drop a table
+DROP TABLE test;
+
+-- drop a table. no error if the table doesn't exist
+DROP TABLE IF EXISTS test;
+
+-- insert an empty row
+INSERT INTO test DEFAULT VALUES;
+
+-- inserting rows from other table
+INSERT INTO test (a, b, c) SELECT id, name, description FROM item;
+
 -- alter is used to add, delete or modify columns in an existing table
 -- is also to add and drop various constraints on an existing table
 ALTER TABLE table_name
