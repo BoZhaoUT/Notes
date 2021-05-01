@@ -64,6 +64,12 @@ ADD column_name datatype;
 ALTER TABLE table_name
 DROP COLUMN column_name;
 
+-- select unique values. it can be used on multiple values
+SELECT DISTINCT a, b FROM Country;
+
+-- simple ORDER BY. it's increasing order by default
+SELECT Name FROM Country ORDER BY Continent DESC, Name ASC;
+
 
 -- if check_expression is Null, then replace it with replacement_value
 ISNULL ( check_expression , replacement_value )  
