@@ -85,3 +85,31 @@ val tuple = (1, 1.4, "hello")
 val x = tuple._3
 // destructing
 val (first, second, third) = tuple
+
+
+class Employee(val fName: String, val lName: String, var salaryType: Char = 'n') {
+  def fullname: String = fName + " " + lName
+  var employeeID = Employee.newEmployeeID()
+  override def toString = "Employee Name: " + fullname
+}
+// a companion object
+object Employee {
+  var employeeID = 0
+  def newEmployeeID() = {
+    employeeID += 1
+    return employeeID
+  }
+}
+// case class
+object caseClassExample extends App {
+  val alice = Person("alice", 25)
+  val bob = Person("bob", 26)
+  for (person <- List(alice, bob)) {
+    person match {
+      case Person("alice", 25) => println("alice")
+      case Person("bob", 26) => println("bob")
+    }
+  }
+}
+// a case class works like a tuple
+case class Person(fName: String, age: Int)
